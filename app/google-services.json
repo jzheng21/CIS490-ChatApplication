@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "711920906194",
+    "firebase_url": "https://chatapplication-9c9ad.firebaseio.com",
+    "project_id": "chatapplication-9c9ad",
+    "storage_bucket": "chatapplication-9c9ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711920906194:android:74435191cb8c4148",
+        "android_client_info": {
+          "package_name": "ksu.cs.edu.chatapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711920906194-17afpecll0m20vetr7jrfj0r49mav6j6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ksu.cs.edu.chatapplication",
+            "certificate_hash": "8baeec11a56d30a0c367214a5578157f39ab91f8"
+          }
+        },
+        {
+          "client_id": "711920906194-3oc0oe3il4qu92dqr2l5sj0fu1v9dkle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN4Z1EK-jG580qGKfjd62WsULJzNTZ8tg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711920906194-3oc0oe3il4qu92dqr2l5sj0fu1v9dkle.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
