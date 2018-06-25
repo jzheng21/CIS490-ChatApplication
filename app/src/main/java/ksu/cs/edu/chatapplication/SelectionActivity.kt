@@ -1,5 +1,6 @@
 package ksu.cs.edu.chatapplication
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -39,6 +40,7 @@ class SelectionActivity : AppCompatActivity() {
                         val linearLayout = findViewById<LinearLayout>(R.id.linearLayoutThreads)
                         val launchThreadButton = Button(this@SelectionActivity)
                         launchThreadButton.text = discussionThread.title
+                        launchThreadButton.setOnClickListener { startActivity(Intent(this@SelectionActivity, ChatRoom::class.java).putExtra("title", discussionThread.title))}
                         linearLayout.addView(launchThreadButton)
                     }
                 }
