@@ -32,10 +32,7 @@ class MainActivity : AppCompatActivity() {
         var auth : FirebaseAuth = FirebaseAuth.getInstance()
         if(auth.currentUser == null){
             // not signed in
-            startActivityForResult(
-                    AuthUI.getInstance()
-                            .createSignInIntentBuilder().build(),
-                    RC_SIGN_IN)
+            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), RC_SIGN_IN)
         }
 
     }
