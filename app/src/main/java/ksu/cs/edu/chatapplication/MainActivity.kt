@@ -24,10 +24,9 @@ import android.support.design.widget.Snackbar;
 
 
 
-
+const val RC_SIGN_IN = 1234
 
 class MainActivity : AppCompatActivity() {
-    //val RC_SIGN_IN = 1234
 
     private val nAuth : FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -35,17 +34,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.setTitle("Home")
+        supportActionBar?.setHomeButtonEnabled(true)
+
+
         // Using AuthUI
-        /*var auth : FirebaseAuth = FirebaseAuth.getInstance()
+        var auth : FirebaseAuth = FirebaseAuth.getInstance()
         if(auth.currentUser == null){
             // not signed in
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), RC_SIGN_IN)
-        }*/
+        }
 
     }
 
     // Using AuthUI
-    /*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == RC_SIGN_IN){
             val response = IdpResponse.fromResultIntent(data)
@@ -58,8 +60,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
-    }*/
+    }
 
+    /*
     override fun onStart() {
         super.onStart()
 
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         else{
             showMessage("Already signed in")
         }
-    }
+    }*/
 
     fun launchSelections(view : View){
         val intent = Intent(this, SelectionActivity::class.java)

@@ -5,8 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -16,9 +21,31 @@ import com.google.firebase.database.FirebaseDatabase
 
 class SelectionActivity : AppCompatActivity() {
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.mymenu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.getItemId()
+
+        if (id == R.id.AddChatRoom) {
+            // do something here
+            var roomName : String
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Add a Chat Room")
+            val editText = EditText(this)
+            builder.setView(editText)
+            builder.show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selection)
+
+        supportActionBar?.setTitle("Chat Rooms")
 
         val auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -63,7 +90,10 @@ class SelectionActivity : AppCompatActivity() {
                         launchThreadButton.text = discussionThread.title
                         launchThreadButton.tag = dataSnapshot.key
                         launchThreadButton.setOnClickListener {
-                            startActivity(Intent(this@SelectionActivity, ChatRoom::class.java).putExtra("title", discussionThread.title))
+                            val intent = Intent(this@SelectionActivity, ChatRoom::class.java)
+                            intent.putExtra("title", discussionThread.title)
+                            intent.putExtra("courseName", dataSnapshot.key)
+                            startActivity(intent)
                         }
                         linearLayout.addView(launchThreadButton)
                     }
