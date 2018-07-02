@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         showMessage("Here000")
 
         val user = nAuth.currentUser
-        //nAuth.signInWithEmailAndPassword("jzheng11@ksu.edu", "1234")
+        nAuth.signInWithEmailAndPassword("jzheng11@ksu.edu", "1234")
         if(user == null){
             nAuth.signInWithEmailAndPassword("jzheng11@ksu.edu", "1234")
         }
