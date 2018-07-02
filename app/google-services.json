@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "711920906194-66j8rp79qiodipkk65tb3rqua2nlvtgb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ksu.cs.edu.chatapplication",
+            "certificate_hash": "bd7ef08f97bed1b8868285b1d065ae6cfc2e9fce"
+          }
+        },
+        {
           "client_id": "711920906194-3oc0oe3il4qu92dqr2l5sj0fu1v9dkle.apps.googleusercontent.com",
           "client_type": 3
         }
