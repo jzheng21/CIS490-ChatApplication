@@ -20,11 +20,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 import java.util.Arrays.asList
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.Snackbar
 
 
 
-const val RC_SIGN_IN = 1234
+const val RC_SIGN_IN = 123
 
 class MainActivity : AppCompatActivity() {
 

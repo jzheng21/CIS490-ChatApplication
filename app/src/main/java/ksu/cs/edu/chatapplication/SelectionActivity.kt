@@ -9,17 +9,21 @@ import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 
+
 class SelectionActivity : AppCompatActivity() {
+
+    private val db = FirebaseDatabase.getInstance()
+    private val ref = db.getReference("threads")
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.mymenu, menu)
@@ -31,12 +35,52 @@ class SelectionActivity : AppCompatActivity() {
 
         if (id == R.id.AddChatRoom) {
             // do something here
-            var roomName : String
-            val builder = AlertDialog.Builder(this)
+            var roomName : String = "Unknown"
+            var roomId : String = "Unknown"
+
+            val layout = LinearLayout(this)
+
+            val courseName = EditText(this)
+            courseName.setHint("Course Name")
+            val courseId = EditText(this)
+            courseId.setHint("Course ID")
+
+            layout.addView(courseName)
+            layout.addView(courseId)
+
+            val thread = Button(this@SelectionActivity)
+
+            val builder = AlertDialog.Builder(this@SelectionActivity)
             builder.setTitle("Add a Chat Room")
-            val editText = EditText(this)
-            builder.setView(editText)
+            builder.setView(layout)
+
+            builder.setPositiveButton("OK") { dialog, which ->
+                roomName = courseName.text.toString();
+                roomId = courseId.text.toString();
+                var map = mutableMapOf<String, String>()
+                map["title"] = roomName
+                ref.push().setValue(map)
+            }
+            builder.setNegativeButton("Cancel") { dialog, which -> dialog.cancel() }
+
             builder.show()
+
+
+
+            /*val linearLayout = findViewById<LinearLayout>(R.id.linearLayoutThreads)
+
+            thread.setOnClickListener {
+                val intent = Intent(this@SelectionActivity, ChatRoom::class.java)
+                intent.putExtra("title", roomName)
+
+                intent.putExtra("courseName", roomId)
+
+                startActivity(intent)
+            }
+            linearLayout.addView(thread)*/
+
+
+
         }
         return super.onOptionsItemSelected(item)
     }
@@ -55,8 +99,7 @@ class SelectionActivity : AppCompatActivity() {
             showMessage("Not signed in")
         }
 
-        val db = FirebaseDatabase.getInstance()
-        val ref = db.getReference("threads")
+
 
         ref.addChildEventListener(object : ChildEventListener {
             override fun onCancelled(error: DatabaseError) {
